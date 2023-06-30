@@ -28,10 +28,10 @@ def read_pdf_content():
         if filename.endswith('.pdf'):
             filepath = os.path.join(directory, filename)
             with open(filepath, 'rb') as f:
-                pdf_reader = PyPDF2.PdfFileReader(f)
+                pdf_reader = PyPDF2.PdfReader(f)
                 title = filename
                 content = ''
-                for page_num in range(pdf_reader.getNumPages()):
+                for page_num in range(len(pdf_reader.pages)):
                     page = pdf_reader.getPage(page_num)
                     content += page.extractText()
 
